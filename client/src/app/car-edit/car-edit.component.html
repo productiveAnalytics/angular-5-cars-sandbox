@@ -1,0 +1,21 @@
+<!--p>
+  car-edit works!
+</p-->
+
+<form #carForm="ngForm" (ngSubmit)="saveCar(carForm.value)">
+	<div>
+	  <h2>{{car.name ? 'Edit' : 'Add'}} Car</h2>
+	</div>
+
+	<div>
+	  <input type="hidden" name="href" [(ngModel)]="car.href" />
+	  <input placeholder="Your Car Name" [(ngModel)]="car.name" required name="name" #name/>
+	</div>
+
+	<div>
+	  <button color="primary" type="submit" [disabled]="!carForm.form.valid">{{car.href ? 'Update' : 'Insert'}}</button>
+	  <button color="secondary" (click)="removeCar(car.href)" *ngIf="car.href" type="button">Delete</button>
+	  <a routerLink="/car-list">Cancel</a>
+	</div>
+
+</form>
